@@ -24,10 +24,10 @@ def get_contract(id):
     return jsonify({"error": "Contract not found"}), 404
 
 
-@app.route('/customers/<string:name>')
-def get_customers(name):
-   if name.lower() in [c.lower() for c in customers]:
-       return jsonify({"message": f"Customer found: {name}"}), 200
+@app.route('/customers/<customer_name>')
+def get_customers(customer_name):
+   if customer_name.lower() in [c.lower() for c in customers]:
+       return jsonify({"message": f"Customer found: {customer_name}"}), 200
    return jsonify({"error": "Customer not found"}), 404
 
 if __name__ == '__main__':
