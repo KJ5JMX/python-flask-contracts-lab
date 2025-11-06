@@ -20,15 +20,15 @@ def index():
 def get_contract(id):
     for contract in contracts:
         if contract["id"] == id:
-            return jsonify(contract), 200
+            return jsonify(contract), 204
     return jsonify({"error": "Contract not found"}), 404
 
 
-@app.route('/customers/<customer_name>')
-def get_customers(customer_name):
-   if customer_name.lower() in [c.lower() for c in customers]:
-       return jsonify({"message": f"Customer found: {customer_name}"}), 200
-   return jsonify({"error": "Customer not found"}), 404
+@app.route('/customer/<customer_name>')
+def get_customer(customer_name):
+    if customer_name.lower() in [c.lower() for c in customers]:
+        return '', 204
+    return jsonify({"error": "Customer not found"}), 404
 
 if __name__ == '__main__':
     print(app.url_map)
